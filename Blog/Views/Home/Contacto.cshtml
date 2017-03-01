@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Contacto";
+}
+
+@section styles{    
+    <link href="~/Content/contacto.css" rel="stylesheet" />
+}
+
+
+<h2>Contacto</h2>
+
+<p>Esta es la página de contacto. Larala...</p>
+
+<form action="@Url.Action("MailContacto", "Home")" method="post">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="mail">Mail</label>
+            <input type="email" class="form-control" id="mail" name="mail" required>
+        </div>
+        <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" class="form-control"  name="mensaje" required></textarea>
+        </div>
+        <input type="submit" value="Enviar" />
+    </div>
+</form>
+
+
+
+
+

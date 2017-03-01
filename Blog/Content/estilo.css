@@ -1,0 +1,28 @@
+body{
+    font-family: 'Open Sans', sans-serif;    
+}
+
+.navbar-default .navbar-brand{
+    color: blue;
+}
+
+#dropdownUsuario, #nuevoArticulo {
+    display: none;
+}
+
+.carousel{
+    /*background-image: url('../images/trama2.png'); */
+    /*background-repeat: repeat-x;*/
+    background: lightslategray url('images/trello.png'); 
+}
+
+.carousel img{
+    max-height: 500px;
+    margin: 0 auto;
+}
+
+.carousel-caption
+{
+    color: #333;
+    background-color: rgba(255,255,255,0.7);
+}
