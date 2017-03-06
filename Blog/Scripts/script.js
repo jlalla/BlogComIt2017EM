@@ -32,28 +32,28 @@ $(document).ready(function(){
         window.location.href = "http://www.google.com";
     });
 
-    $('#guardarArticulo').on('click', function(){
-        //agarramos lo ingresa por el usuario en los inputs
-        var titulo = $('#tituloArticulo').val();
-        var imagen = $('#imagenArticulo').val();
-        var texto = $('#textoArticulo').val();
+    //$('#guardarArticulo').on('click', function(){
+    //    //agarramos lo ingresa por el usuario en los inputs
+    //    var titulo = $('#tituloArticulo').val();
+    //    var imagen = $('#imagenArticulo').val();
+    //    var texto = $('#textoArticulo').val();
         
-        //creamos el elemento a agregar
-        var $nuevoArticulo = $('<div class="col-md-6">' +
-                '<img class="img-responsive" src="' + imagen + '" alt="Asad">' +
-                '<h3>'+ titulo + '</h3>' +
-                '<p>' + texto +'</p>'+
-                '</div>');
+    //    //creamos el elemento a agregar
+    //    var $nuevoArticulo = $('<div class="col-md-6">' +
+    //            '<img class="img-responsive" src="' + imagen + '" alt="Asad">' +
+    //            '<h3>'+ titulo + '</h3>' +
+    //            '<p>' + texto +'</p>'+
+    //            '</div>');
         
-        //agregamos este nuevo elemento al final del div de artículos
-        $('#articulos').append($nuevoArticulo);
+    //    //agregamos este nuevo elemento al final del div de artículos
+    //    $('#articulos').append($nuevoArticulo);
 
-    //  <div class="col-md-6">
-    //    <img class="img-responsive" src="images/asad.jpg" alt="Asad">
-    //    <h3>El turquito Asad se fue a USA</h3>
-    //    <p>Se lo llevó el Tata</p>        
-    //</div>
-    });
+    ////  <div class="col-md-6">
+    ////    <img class="img-responsive" src="images/asad.jpg" alt="Asad">
+    ////    <h3>El turquito Asad se fue a USA</h3>
+    ////    <p>Se lo llevó el Tata</p>        
+    ////</div>
+    //});
 
     //obtener clima de CABA
     $.ajax('http://api.openweathermap.org/data/2.5/weather?id=3433955&appid=b8c4ffcd65abed88f5ba857acde3cbd8',

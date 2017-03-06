@@ -76,6 +76,17 @@
         <h3>El turquito Asad se fue a USA</h3>
         <p>Se lo llevó el Tata</p>
     </div>
+    @if (ViewBag.Articulos != null)
+    {
+        foreach (Blog.Models.Articulo articulo in ViewBag.Articulos)
+        {
+            <div class="col-md-6">
+                <img class="img-responsive" src="@articulo.Imagen" alt="imagen">
+                <h3>@articulo.Titulo</h3>
+                <p>@articulo.Texto</p>
+            </div>
+        }
+    }
 </div>
 
 <!-- Modal Fixture -->
@@ -102,31 +113,35 @@
 <div class="modal fade" id="modalArticulo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Nuevo artículo</h4>
-            </div>
-            <div class="modal-body">
-                <form>
+            <form action="@Url.Action("GuardarArticulo","Articulos")" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Nuevo artículo</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="idArticulo">ID</label>
+                        <input type="number" min="1" id="idArticulo" name="id">
+                    </div>
                     <div class="form-group">
                         <label for="tituloArticulo">Título</label>
-                        <input type="text" id="tituloArticulo">
+                        <input type="text" id="tituloArticulo" name="titulo">
                     </div>
                     <div class="form-group">
                         <label for="imagenArticulo">Imagen</label>
                         <!--<input type="file" id="imagenArticulo">-->
-                        <input type="text" id="imagenArticulo">
+                        <input type="text" id="imagenArticulo" name="imagen">
                     </div>
                     <div class="form-group">
                         <label for="textoArticulo">Texto</label>
-                        <textarea type="text" id="textoArticulo"></textarea>
+                        <textarea type="text" id="textoArticulo" name="texto"></textarea>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button id="guardarArticulo" type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <input id="guardarArticulo" type="submit" class="btn btn-primary" value="Guardar">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

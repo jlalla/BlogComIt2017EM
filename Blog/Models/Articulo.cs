@@ -11,8 +11,11 @@ namespace Blog.Models
     public class Articulo
     {
         public long ID { get; set; }
+        public DateTime Fecha { get; set; }
         public string Titulo { get; set; }
         public string Texto { get; set; }
-        //autor... comentarios...
+        public string Imagen { get; set; }
+        public Usuario Autor { get; set; }
+        public List<Comentario> Comentarios { get; set; }
     }
 }
