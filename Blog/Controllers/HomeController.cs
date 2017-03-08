@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -12,6 +13,8 @@ namespace Blog.Controllers
     {
         public ActionResult Index()
         {
+            List<Articulo> articulos = (List<Articulo>)Session["Articulos"];
+            ViewBag.Articulos = articulos;
             return View();
         }    
 
