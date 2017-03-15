@@ -31,7 +31,6 @@
             <div class="carousel-caption">
                 <h3>El turquito Asad se fue a USA</h3>
                 <p>Se lo llevó el Tata</p>
-
             </div>
         </div>
     </div>
@@ -70,12 +69,7 @@
 
 <!-- Artículos -->
 <h2>Artículos</h2>
-<div id="articulos">
-    <div class="col-md-6">
-        <img class="img-responsive" src="~/Content/images/asad.jpg" alt="Asad">
-        <h3>El turquito Asad se fue a USA</h3>
-        <p>Se lo llevó el Tata</p>
-    </div>
+<div id="articulos">    
     @if (ViewBag.Articulos != null)
     {
         foreach (Blog.Models.Articulo articulo in ViewBag.Articulos)

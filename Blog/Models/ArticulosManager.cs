@@ -37,12 +37,47 @@ namespace Blog.Models
 
         public void Eliminar(long ID)
         {
+            //1-Conexión.. a qué BBDD
+            SqlConnection conexion = new SqlConnection("Server=JLALLA\\SQLEXPRESS;Database=Blog;Trusted_Connection=True;");
+            //2-nos conectamos
+            conexion.Open();
+            //3-creamos el objeto que nos permite escribir la sentencia
+            SqlCommand sentencia = conexion.CreateCommand();
+            //4-escribrimos la sentencia
+            sentencia.CommandText = "delete from Articulos where Id = @Id";
+            //sentencia.Parameters.AddWithValue("@Fecha", articulo.Fecha);
+            sentencia.Parameters.AddWithValue("@Id", ID);
+            //5-Ejecutar!
+            sentencia.ExecuteNonQuery();
 
+            //CERRAR LA CONEXION AL TERMINAR!!!!
+            conexion.Close();
         }
 
+        /// <summary>
+        /// Modificamos todo un artículo
+        /// </summary>
+        /// <param name="articulo"></param>
         public void Actualizar(Articulo articulo)
         {
+            //1-Conexión.. a qué BBDD
+            SqlConnection conexion = new SqlConnection("Server=JLALLA\\SQLEXPRESS;Database=Blog;Trusted_Connection=True;");
+            //2-nos conectamos
+            conexion.Open();
+            //3-creamos el objeto que nos permite escribir la sentencia
+            SqlCommand sentencia = conexion.CreateCommand();
+            //4-escribrimos la sentencia
+            sentencia.CommandText = "update Articulos set Titulo = @Titulo, Texto = @Texto, Imagen = @Imagen, Autor = @Autor WHERE Id = @Id";
+            sentencia.Parameters.AddWithValue("@Titulo", articulo.Titulo);
+            sentencia.Parameters.AddWithValue("@Texto", articulo.Texto);
+            sentencia.Parameters.AddWithValue("@Imagen", articulo.Imagen);
+            sentencia.Parameters.AddWithValue("@Autor", "jorgegutierrez@gmail.com");
+            sentencia.Parameters.AddWithValue("@Id", articulo.ID);
+            //5-Ejecutar!
+            sentencia.ExecuteNonQuery();
 
+            //CERRAR LA CONEXION AL TERMINAR!!!!
+            conexion.Close();
         }
 
         public List<Articulo> ConsultarTodos()
