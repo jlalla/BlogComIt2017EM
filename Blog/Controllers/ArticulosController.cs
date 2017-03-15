@@ -13,23 +13,25 @@ namespace Blog.Controllers
         public ActionResult GuardarArticulo(int id, string titulo, string imagen, string texto)
         {
             Articulo nuevoArticulo = new Articulo();
-            nuevoArticulo.ID = id;
+            //nuevoArticulo.ID = id;
+            //nuevoArticulo.Fecha = DateTime.Now;
             nuevoArticulo.Titulo = titulo;
             nuevoArticulo.Imagen = imagen;
             nuevoArticulo.Texto = texto;
 
-            //Session["Articulo"] = nuevoArticulo;
-
-            List<Articulo> listaArticulos = (List<Articulo>)Session["Articulos"];
-            if(listaArticulos == null) 
-            {
-                //es el primer artículo
-                listaArticulos = new List<Articulo>();
-            }
-            listaArticulos.Add(nuevoArticulo);
-            Session["Articulos"] = listaArticulos;
+            ArticulosManager manager = new ArticulosManager();
+            manager.Insertar(nuevoArticulo);
 
             return RedirectToAction("Index", "Home");
+
+            ////List<Articulo> listaArticulos = (List<Articulo>)Session["Articulos"];
+            ////if(listaArticulos == null) 
+            ////{
+            ////    //es el primer artículo
+            ////    listaArticulos = new List<Articulo>();
+            ////}
+            ////listaArticulos.Add(nuevoArticulo);
+            ////Session["Articulos"] = listaArticulos;
         }
     }
 }

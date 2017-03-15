@@ -13,7 +13,10 @@ namespace Blog.Controllers
     {
         public ActionResult Index()
         {
-            List<Articulo> articulos = (List<Articulo>)Session["Articulos"];
+            //List<Articulo> articulos = (List<Articulo>)Session["Articulos"];
+
+            ArticulosManager manager = new ArticulosManager();
+            List<Articulo> articulos = manager.ConsultarTodos();
             ViewBag.Articulos = articulos;
             return View();
         }    
