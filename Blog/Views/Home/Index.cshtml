@@ -31,7 +31,6 @@
             <div class="carousel-caption">
                 <h3>El turquito Asad se fue a USA</h3>
                 <p>Se lo llevó el Tata</p>
-
             </div>
         </div>
     </div>
@@ -70,12 +69,7 @@
 
 <!-- Artículos -->
 <h2>Artículos</h2>
-<div id="articulos">
-    <div class="col-md-6">
-        <img class="img-responsive" src="~/Content/images/asad.jpg" alt="Asad">
-        <h3>El turquito Asad se fue a USA</h3>
-        <p>Se lo llevó el Tata</p>
-    </div>
+<div id="articulos">    
     @if (ViewBag.Articulos != null)
     {
         foreach (Blog.Models.Articulo articulo in ViewBag.Articulos)
@@ -119,10 +113,10 @@
                     <h4 class="modal-title" id="myModalLabel">Nuevo artículo</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <label for="idArticulo">ID</label>
                         <input type="number" min="1" id="idArticulo" name="id">
-                    </div>
+                    </div>*@
                     <div class="form-group">
                         <label for="tituloArticulo">Título</label>
                         <input type="text" id="tituloArticulo" name="titulo">
