@@ -39,16 +39,22 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <!--<li><a href="#" onclick="bienvenida();" role="button">Ingresar</a></li>-->
-                    <li id="ingresar"><a href="#" role="button">Ingresar</a></li>
-                    <li id="nuevoArticulo"><a href="#" role="button" data-toggle="modal" data-target="#modalArticulo">Nuevo Artículo</a></li>
-                    <li id="dropdownUsuario" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="nombreUsuario">Gustavo</span> <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Mi Perfil</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a id="salir" href="#">Salir</a></li>
-                        </ul>
-                    </li>
+                    @if (Session["UsuarioLogueado"] != null)
+                    {
+                        <li id="nuevoArticulo"><a href="#" role="button" data-toggle="modal" data-target="#modalArticulo">Nuevo Artículo</a></li>
+                        <li id="dropdownUsuario" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="nombreUsuario">@(((Blog.Models.Usuario)Session["UsuarioLogueado"]).Nombre)</span> <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Mi Perfil</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a id="salir" href="@Url.Action("Logout","Usuarios")">Salir</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li id="ingresar"><a href="@Url.Action("Login","Usuarios")" role="button">Ingresar</a></li>
+                    }                                       
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
