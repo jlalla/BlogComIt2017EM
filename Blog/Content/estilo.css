@@ -6,9 +6,9 @@ body{
     color: blue;
 }
 
-#dropdownUsuario, #nuevoArticulo {
+/*#dropdownUsuario, #nuevoArticulo {
     display: none;
-}
+}*/
 
 .carousel{
     /*background-image: url('../images/trama2.png'); */

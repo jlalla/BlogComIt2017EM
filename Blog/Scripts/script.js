@@ -18,19 +18,19 @@ function bienvenida(){
 
 $(document).ready(function(){
     
-    $('#ingresar').on('click', function(){
-        var nombre = bienvenida();
-        $('#nombreUsuario').text(nombre);
-        $('#dropdownUsuario').show();
-        $('#nuevoArticulo').show();
-        $('#ingresar').hide();
-    });
+    //$('#ingresar').on('click', function(){
+    //    var nombre = bienvenida();
+    //    $('#nombreUsuario').text(nombre);
+    //    $('#dropdownUsuario').show();
+    //    $('#nuevoArticulo').show();
+    //    $('#ingresar').hide();
+    //});
 
-    $('#salir').on('click', function(){
-        //$('body').css('background-color','red');
-        alert('Chau!!!');
-        window.location.href = "http://www.google.com";
-    });
+    //$('#salir').on('click', function(){
+    //    //$('body').css('background-color','red');
+    //    alert('Chau!!!');
+    //    window.location.href = "http://www.google.com";
+    //});
 
     //$('#guardarArticulo').on('click', function(){
     //    //agarramos lo ingresa por el usuario en los inputs
