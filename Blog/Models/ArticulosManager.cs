@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,7 @@ namespace Blog.Models
         public void Insertar(Articulo articulo)
         {
             //1-Conexión.. a qué BBDD
-            SqlConnection conexion = new SqlConnection("Server=JLALLA\\SQLEXPRESS;Database=Blog;Trusted_Connection=True;");
+            SqlConnection conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBaseDeDatos"]);
             //2-nos conectamos
             conexion.Open();
             //3-creamos el objeto que nos permite escribir la sentencia
@@ -22,7 +23,7 @@ namespace Blog.Models
             sentencia.Parameters.AddWithValue("@Titulo", articulo.Titulo);
             sentencia.Parameters.AddWithValue("@Texto", articulo.Texto);
             sentencia.Parameters.AddWithValue("@Imagen", articulo.Imagen);
-            sentencia.Parameters.AddWithValue("@Autor", "jorgegutierrez@gmail.com");
+            sentencia.Parameters.AddWithValue("@Autor", articulo.Autor.Mail);
             //5-Ejecutar!
             sentencia.ExecuteNonQuery();
 
@@ -38,7 +39,7 @@ namespace Blog.Models
         public void Eliminar(long ID)
         {
             //1-Conexión.. a qué BBDD
-            SqlConnection conexion = new SqlConnection("Server=JLALLA\\SQLEXPRESS;Database=Blog;Trusted_Connection=True;");
+            SqlConnection conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBaseDeDatos"]);
             //2-nos conectamos
             conexion.Open();
             //3-creamos el objeto que nos permite escribir la sentencia
@@ -61,7 +62,7 @@ namespace Blog.Models
         public void Actualizar(Articulo articulo)
         {
             //1-Conexión.. a qué BBDD
-            SqlConnection conexion = new SqlConnection("Server=JLALLA\\SQLEXPRESS;Database=Blog;Trusted_Connection=True;");
+            SqlConnection conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBaseDeDatos"]);
             //2-nos conectamos
             conexion.Open();
             //3-creamos el objeto que nos permite escribir la sentencia
@@ -85,7 +86,7 @@ namespace Blog.Models
             List<Articulo> articulos = new List<Articulo>();
 
             //1-Conexión.. a qué BBDD
-            SqlConnection conexion = new SqlConnection("Server=JLALLA\\SQLEXPRESS;Database=Blog;Trusted_Connection=True;");
+            SqlConnection conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBaseDeDatos"]);
             //2-nos conectamos
             conexion.Open();
             //3-creamos el objeto que nos permite escribir la sentencia
