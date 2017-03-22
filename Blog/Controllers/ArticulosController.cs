@@ -18,6 +18,7 @@ namespace Blog.Controllers
             nuevoArticulo.Titulo = titulo;
             nuevoArticulo.Imagen = imagen;
             nuevoArticulo.Texto = texto;
+            nuevoArticulo.Autor = (Usuario)Session["UsuarioLogueado"];
 
             ArticulosManager manager = new ArticulosManager();
             manager.Insertar(nuevoArticulo);

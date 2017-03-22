@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -13,7 +14,7 @@ namespace Blog.Models
             Usuario usuario = new Models.Usuario();
 
             //1-Conexión.. a qué BBDD
-            SqlConnection conexion = new SqlConnection("Server=JLALLA\\SQLEXPRESS;Database=Blog;Trusted_Connection=True;");
+            SqlConnection conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBaseDeDatos"]);
             //2-nos conectamos
             conexion.Open();
             //3-creamos el objeto que nos permite escribir la sentencia
