@@ -10,7 +10,7 @@ namespace Blog.Controllers
     public class ArticulosController : Controller
     {
         [HttpPost]
-        public ActionResult GuardarArticulo(int id, string titulo, string imagen, string texto)
+        public ActionResult GuardarArticulo(string titulo, string imagen, string texto)
         {
             Articulo nuevoArticulo = new Articulo();
             //nuevoArticulo.ID = id;
