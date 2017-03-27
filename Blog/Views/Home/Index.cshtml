@@ -75,9 +75,11 @@
         foreach (Blog.Models.Articulo articulo in ViewBag.Articulos)
         {
             <div class="col-md-6">
-                <img class="img-responsive" src="@articulo.Imagen" alt="imagen">
-                <h3>@articulo.Titulo</h3>
-                <p>@articulo.Texto</p>
+                <a href="@Url.Action("Ver", "Articulos", new { ID = articulo.ID })">
+                    <img class="img-responsive" src="@articulo.Imagen" alt="imagen">
+                    <h3>@articulo.Titulo</h3>
+                    <p>@articulo.Texto</p>
+                </a>
             </div>
         }
     }

@@ -34,5 +34,13 @@ namespace Blog.Controllers
             ////listaArticulos.Add(nuevoArticulo);
             ////Session["Articulos"] = listaArticulos;
         }
+
+        public ActionResult Ver(long ID)
+        {
+            ArticulosManager manager = new ArticulosManager();
+            Articulo articulo = manager.Consultar(ID);
+            ViewBag.Articulo = articulo;
+            return View();
+        }
     }
 }
