@@ -9,7 +9,7 @@ namespace Blog.Models
 {
     public class ArticulosManager
     {
-        public void Insertar(Articulo articulo)
+        public Articulo Insertar(Articulo articulo)
         {
             //1-Conexión.. a qué BBDD
             SqlConnection conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBaseDeDatos"]);
@@ -18,17 +18,19 @@ namespace Blog.Models
             //3-creamos el objeto que nos permite escribir la sentencia
             SqlCommand sentencia = conexion.CreateCommand();
             //4-escribrimos la sentencia
-            sentencia.CommandText = "insert into Articulos (Fecha, Titulo, Texto, Imagen, Autor) VALUES (getdate(), @Titulo, @Texto, @Imagen, @Autor)";
+            sentencia.CommandText = "insert into Articulos (Fecha, Titulo, Texto, Imagen, Autor) OUTPUT INSERTED.Id VALUES (getdate(), @Titulo, @Texto, @Imagen, @Autor)";
             //sentencia.Parameters.AddWithValue("@Fecha", articulo.Fecha);
             sentencia.Parameters.AddWithValue("@Titulo", articulo.Titulo);
             sentencia.Parameters.AddWithValue("@Texto", articulo.Texto);
             sentencia.Parameters.AddWithValue("@Imagen", articulo.Imagen);
             sentencia.Parameters.AddWithValue("@Autor", articulo.Autor.Mail);
             //5-Ejecutar!
-            sentencia.ExecuteNonQuery();
+            articulo.ID = (long) sentencia.ExecuteScalar(); //obtenemos el ID insertado
 
             //CERRAR LA CONEXION AL TERMINAR!!!!
             conexion.Close();
+
+            return articulo;
         }
 
         public void Eliminar(Articulo articulo)

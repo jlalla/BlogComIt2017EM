@@ -10,18 +10,22 @@ namespace Blog.Controllers
     public class ArticulosController : Controller
     {
         [HttpPost]
-        public ActionResult GuardarArticulo(string titulo, string imagen, string texto)
+        public ActionResult GuardarArticulo(string titulo, string imagen, 
+            string texto, HttpPostedFileBase imagenFile)
         {
             Articulo nuevoArticulo = new Articulo();
-            //nuevoArticulo.ID = id;
-            //nuevoArticulo.Fecha = DateTime.Now;
             nuevoArticulo.Titulo = titulo;
             nuevoArticulo.Imagen = imagen;
             nuevoArticulo.Texto = texto;
             nuevoArticulo.Autor = (Usuario)Session["UsuarioLogueado"];
 
             ArticulosManager manager = new ArticulosManager();
-            manager.Insertar(nuevoArticulo);
+            nuevoArticulo = manager.Insertar(nuevoArticulo);
+
+            if(imagenFile != null)
+            {
+                imagenFile.SaveAs(Server.MapPath("~/Content/images/articulos/" + nuevoArticulo.ID + ".png"));
+            }
 
             return RedirectToAction("Index", "Home");
 

@@ -76,7 +76,14 @@
         {
             <div class="col-md-6">
                 <a href="@Url.Action("Ver", "Articulos", new { ID = articulo.ID })">
-                    <img class="img-responsive" src="@articulo.Imagen" alt="imagen">
+                    @if (string.IsNullOrEmpty(@articulo.Imagen))
+                    {
+                        <img class="img-responsive" src="~/Content/images/articulos/@(articulo.ID).png" alt="imagen">
+                    }
+                    else
+                    {
+                        <img class="img-responsive" src="@articulo.Imagen" alt="imagen">
+                    }
                     <h3>@articulo.Titulo</h3>
                     <p>@articulo.Texto</p>
                 </a>
@@ -109,7 +116,7 @@
 <div class="modal fade" id="modalArticulo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="@Url.Action("GuardarArticulo","Articulos")" method="post">
+            <form action="@Url.Action("GuardarArticulo","Articulos")" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Nuevo artículo</h4>
@@ -127,6 +134,10 @@
                         <label for="imagenArticulo">Imagen</label>
                         <!--<input type="file" id="imagenArticulo">-->
                         <input type="text" id="imagenArticulo" name="imagen">
+                    </div>
+                    <div class="form-group">
+                        <label for="imagenArticuloInput">Imagen</label>
+                        <input type="file" id="imagenArticuloInput" name="imagenFile">                        
                     </div>
                     <div class="form-group">
                         <label for="textoArticulo">Texto</label>
