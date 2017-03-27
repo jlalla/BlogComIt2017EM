@@ -92,7 +92,7 @@ namespace Blog.Models
             //3-creamos el objeto que nos permite escribir la sentencia
             SqlCommand sentencia = conexion.CreateCommand();
             //4-escribrimos la sentencia
-            sentencia.CommandText = "SELECT * FROM Articulos";
+            sentencia.CommandText = "SELECT * FROM Articulos ORDER BY ID DESC";
             //5-ejecutamos la consulta
             SqlDataReader reader = sentencia.ExecuteReader();
             while(reader.Read()) //mientras haya un registro para leer
@@ -118,7 +118,36 @@ namespace Blog.Models
 
         public Articulo Consultar(long ID)
         {
-            return new Articulo();
+            Articulo articulo = new Articulo();
+
+            //1-Conexión.. a qué BBDD
+            SqlConnection conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBaseDeDatos"]);
+            //2-nos conectamos
+            conexion.Open();
+            //3-creamos el objeto que nos permite escribir la sentencia
+            SqlCommand sentencia = conexion.CreateCommand();
+            //4-escribrimos la sentencia
+            sentencia.CommandText = "SELECT * FROM Articulos WHERE Id = @Id";
+            sentencia.Parameters.AddWithValue("@Id", ID);
+            //5-ejecutamos la consulta
+            SqlDataReader reader = sentencia.ExecuteReader();
+            if (reader.Read()) //mientras haya un registro para leer
+            {
+                //le completo los datos                 
+                articulo.Titulo = reader["Titulo"].ToString();
+                articulo.Texto = (string)reader["Texto"];
+                articulo.Imagen = reader["Imagen"].ToString();
+                articulo.ID = (long)reader["Id"];
+                articulo.Fecha = (DateTime)reader["Fecha"];
+                articulo.IdAutor = (string)reader["Autor"];
+            }
+
+            //CERRAR EL READER AL TERMINAR DE LEER LOS REGISTROS
+            reader.Close();
+            //CERRAR LA CONEXION AL TERMINAR!!!!
+            conexion.Close();
+
+            return articulo;
         }
 
         /// <summary>

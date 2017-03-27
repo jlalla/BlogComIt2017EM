@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Ver";
+}
+@if (Session["UsuarioLogueado"] != null    
+  && ((Blog.Models.Usuario)Session["UsuarioLogueado"]).Mail == ViewBag.Articulo.IdAutor)
+{
+<a href="#">Editar artículo...</a>
+<a href="#">Eliminar artículo...</a>
+}
+
+<p>Escrito el @ViewBag.Articulo.Fecha.ToString()</p>
+<h2>@ViewBag.Articulo.Titulo</h2>
+<img class="img-responsive" src="@ViewBag.Articulo.Imagen" alt="imagen">
+<p>@ViewBag.Articulo.Texto</p>
